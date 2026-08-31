@@ -1,4 +1,3 @@
-"""Загрузка parquet из pipeline в MySQL (SQL шаг 1D)."""
 from __future__ import annotations
 
 import os
@@ -19,11 +18,6 @@ DB_NAME = os.getenv("MYSQL_DATABASE", "superstore")
 def main() -> None:
     clean_path = OUT_DIR / "clean.parquet"
     people_path = OUT_DIR / "people.parquet"
-
-    if not clean_path.exists():
-        raise FileNotFoundError(
-            f"Нет {clean_path}. Сначала: python scripts/pipeline.py"
-        )
 
     clean = pd.read_parquet(clean_path)
     url = f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}"
@@ -47,10 +41,6 @@ def main() -> None:
             index=False,
         )
         print("people:", len(people), "rows")
-    else:
-        print("people.parquet нет — пропуск")
-
-    print("OK -> sql/03_sanity.sql в MySQL")
 
 
 if __name__ == "__main__":
