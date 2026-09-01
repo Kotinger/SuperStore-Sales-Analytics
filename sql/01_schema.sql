@@ -1,3 +1,4 @@
+-- Active: 1788229938479@@127.0.0.1@3306@superstore
 CREATE DATABASE IF NOT EXISTS superstore
   CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
@@ -43,6 +44,6 @@ CREATE TABLE people (
   customer_key VARCHAR(512) NOT NULL PRIMARY KEY,
   orders INT NOT NULL,
   gmv DECIMAL(14, 2) NOT NULL,
-  lines INT NOT NULL,
+  `lines` INT NOT NULL,
   first_order DATETIME NOT NULL
 ) ENGINE=InnoDB;

@@ -13,3 +13,5 @@ SUM(sales) AS gmv,
 MIN(DATE(order_date)) AS first_order
 FROM people_orders
 GROUP BY customer_key;
+
+SELECT * FROM people_orders LIMIT 5;
